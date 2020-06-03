@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>巴鹤飞</title>
+    <link rel="short icon" href="Resource/icon.png">
+    <link rel="stylesheet" href="ExternalStyle.css">
+
+    <script type="text/javascript" src="comment.js"></script>
+
+    <style>
+        .head_div{
+            text-align: center;
+        }
+        .head_div img{
+            margin-top: 50px;
+        }
+        .innner_div{
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+            width: 90%;
+            margin: 0 auto;
+            background: white;
+            height: 100px;
+            margin-top: 30px;
+        }
+        .innner_div div{
+            height: 50px;
+        }
+        .innner_div span{
+            padding-left: 15px;
+            font-size: 20px;
+            line-height: 50px;
+        }
+        input{
+            outline: medium;
+            background-color: transparent;
+            border: 0;
+        }
+        .login_div{
+            height: 50px;
+            background: rgb(36,92,161);
+            width: 90%;
+            margin: 0 auto;
+            border-radius: 20px;
+            text-align: center;
+        }
+        .login_div input{
+            font-size: 20px;
+            color: white;
+            line-height: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <span>登陆</span>
+</header>
+
+<div class="head_div">
+    <img src="Resource/head.png" alt="">
+</div>
+
+
+
+<form action="">
+    <div class="innner_div">
+
+        <div style="border-bottom: 1px solid #dddddd">
+            <span>用户名:</span>
+            <input id="account" type="text">
+        </div>
+
+        <div>
+            <span>密码:</span>
+            <input id="pwd" type="password">
+        </div>
+
+    </div>
+
+
+    <div class="login_div">
+        <input id="i_btn" type="button" value="登录" >
+    </div>
+</form>
+
+
+<script>
+
+
+    var btn = document.getElementById("i_btn");
+    btn.onclick = function () {
+        var userName = encodeURIComponent(document.getElementById("account").value);
+        var pwd = encodeURIComponent(document.getElementById("pwd").value);
+        //第三步:向服务器发送请求(传参)
+        var par = "username=" + userName + "&pwd=" + pwd;
+        requestMethod('post','login',par,function (str) {
+            if (str == "登录成功") {
+                location.href = "DropleService.html";
+            } else {
+                alert(str);
+            }
+        });
+
+
+    }
+</script>
+
+</body>
+</html>
